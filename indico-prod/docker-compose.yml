@@ -75,12 +75,12 @@ services:
       - indico-web
     networks:
       - frontend
+      - npm
     ports:
       - "${NGINX_PORT:-8080}:8080"
     volumes:
       - 'static-files:/opt/indico/static:ro'
       - './nginx.conf:/etc/nginx/conf.d/default.conf:ro'
-
 volumes:
   postgres-data:
   archive:
@@ -91,3 +91,5 @@ volumes:
 networks:
   backend: {}
   frontend: {}
+  npm:
+    external: true
